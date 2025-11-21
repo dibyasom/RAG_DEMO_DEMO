@@ -7,13 +7,13 @@ import requests
 # FYI - Use Azure App Servive Plan B1 - Location Canada Central (Highest Avb, and minimal quota restrictions)
 # -----------------------------------------------------------------------------
 
-SEARCH_ENDPOINT = os.getenv("AZURE_SEARCH_ENDPOINT")
-SEARCH_KEY =  os.getenv("AZURE_SEARCH_KEY")
-SEARCH_INDEX =  os.getenv("AZURE_SEARCH_INDEX")
+SEARCH_ENDPOINT = os.getenv("SEARCH_ENDPOINT")
+SEARCH_KEY =  os.getenv("SEARCH_API_KEY")
+SEARCH_INDEX =  os.getenv("SEARCH_INDEX_NAME")
 # e.g. https://<resource>.openai.azure.com
-OPENAI_ENDPOINT =  os.getenv("AZURE_OPENAI_ENDPOINT")
-OPENAI_KEY =  os.getenv("AZURE_OPENAI_KEY")
-OPENAI_DEPLOYMENT = os.getenv("AZURE_OPENAI_DEPLOYMENT", "gpt-35-turbo")
+OPENAI_ENDPOINT =  os.getenv("OPENAI_ENDPOINT")
+OPENAI_KEY =  os.getenv("OPENAI_API_KEY")
+OPENAI_DEPLOYMENT = os.getenv("OPENAI_DEPLOYMENT_NAME", "gpt-35-turbo")
 
 # API versions
 AZ_SEARCH_API_VERSION = "2021-04-30-Preview"
@@ -41,7 +41,7 @@ def infer():
     search_body = {
         "search": question,
         "queryType": "semantic",
-        "semanticConfiguration": "testsementc",
+        "semanticConfiguration": "default",
         "top": 5
     }
     search_headers = {
